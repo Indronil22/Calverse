@@ -4,8 +4,8 @@ import { calcYGPA } from '@/lib/calc-functions';
 
 export default function YGPACalculator() {
   const [semesters, setSemesters] = useState([
-    { sgpa: 8.2, credits: 22 },
-    { sgpa: 8.6, credits: 24 },
+    { sgpa: '', credits: '' },
+    { sgpa: '', credits: '' },
   ]);
 
   const ygpa = calcYGPA(semesters);

@@ -4,9 +4,9 @@ import { calcCGPAFromGrades } from '@/lib/calc-functions';
 
 export default function SGPACalculator() {
   const [subjects, setSubjects] = useState([
-    { credits: 4, gradePoint: 9 },
-    { credits: 3, gradePoint: 8 },
-    { credits: 4, gradePoint: 7 },
+    { credits: '', gradePoint: '' },
+    { credits: '', gradePoint: '' },
+    { credits: '', gradePoint: '' },
   ]);
 
   const sgpa = calcCGPAFromGrades(subjects);

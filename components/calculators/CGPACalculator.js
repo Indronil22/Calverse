@@ -4,8 +4,8 @@ import { calcCGPAFromGrades, calcCGPAToPercentage } from '@/lib/calc-functions';
 
 export default function CGPACalculator() {
   const [subjects, setSubjects] = useState([
-    { credits: 4, gradePoint: 9 },
-    { credits: 3, gradePoint: 8 },
+    { credits: '', gradePoint: '' },
+    { credits: '', gradePoint: '' },
   ]);
 
   const cgpa = calcCGPAFromGrades(subjects);

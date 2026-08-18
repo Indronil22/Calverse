@@ -4,10 +4,10 @@ import { calcDGPA } from '@/lib/calc-functions';
 
 export default function DGPACalculator() {
   const [years, setYears] = useState([
-    { ygpa: 8.4, credits: 46 },
-    { ygpa: 8.6, credits: 48 },
-    { ygpa: 8.7, credits: 48 },
-    { ygpa: 8.9, credits: 48 },
+    { ygpa: '', credits: '' },
+    { ygpa: '', credits: '' },
+    { ygpa: '', credits: '' },
+    { ygpa: '', credits: '' },
   ]);
 
   const dgpa = calcDGPA(years);

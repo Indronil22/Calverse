@@ -40,7 +40,7 @@ const themeInitScript = `
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         {/* AdSense: replace ca-pub-XXXXXXXXXXXXXXX with your real publisher ID once approved */}

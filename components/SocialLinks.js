@@ -5,7 +5,7 @@ export default function SocialLinks({ className = '' }) {
   const links = [
     {
       name: 'Instagram',
-      href: 'https://instagram.com/yourhandle',
+      href: 'https://www.instagram.com/indronildey_/',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
           <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -14,7 +14,7 @@ export default function SocialLinks({ className = '' }) {
         </svg>
       ),
     },
-    {
+    /*{
       name: 'Facebook',
       href: 'https://facebook.com/yourpage',
       icon: (
@@ -22,10 +22,10 @@ export default function SocialLinks({ className = '' }) {
           <path d="M15 8h-2a2 2 0 0 0-2 2v2H9v3h2v6h3v-6h2.2l.8-3H14v-1.5c0-.6.4-1 1-1h1.5V8Z" />
         </svg>
       ),
-    },
+    },*/
     {
       name: 'LinkedIn',
-      href: 'https://linkedin.com/in/yourprofile',
+      href: 'https://www.linkedin.com/in/indronil-dey-7306431b4/',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
           <rect x="3" y="3" width="18" height="18" rx="3" />

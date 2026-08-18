@@ -10,19 +10,27 @@ export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
 }
 
-export function generateMetadata({ params }) {
-  const category = getCategory(params.slug);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+
+  const category = getCategory(slug);
+
   if (!category) return {};
+
   return {
     title: `${category.title} Calculators`,
-    description: `${category.description} Free, fast and accurate ${category.title.toLowerCase()} calculators on Calverse.`,
+    description: category.description,
   };
 }
 
-export default function CategoryPage({ params }) {
-  const category = getCategory(params.slug);
+export default async function CategoryPage({ params }) {
+  const { slug } = await params;
+
+  const category = getCategory(slug);
+
   if (!category) notFound();
-  const tools = getCalculatorsByCategory(params.slug);
+
+  const tools = getCalculatorsByCategory(slug);
 
   return (
     <>

@@ -10,8 +10,9 @@ export function generateStaticParams() {
   return calculators.map((c) => ({ slug: c.slug }));
 }
 
-export function generateMetadata({ params }) {
-  const tool = getCalculator(params.slug);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const tool = getCalculator(slug);
   if (!tool) return {};
   return {
     title: tool.title,
@@ -20,8 +21,9 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function CalculatorPage({ params }) {
-  const tool = getCalculator(params.slug);
+export default async function CalculatorPage({ params }) {
+  const { slug } = await params;
+  const tool = getCalculator(slug);
   if (!tool) notFound();
   const category = getCategory(tool.category);
   const Calculator = getCalculatorComponent(tool.slug);

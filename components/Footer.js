@@ -16,7 +16,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="flex flex-col gap-2 items-start md:items-end">
-          <span className="text-xs text-muted-2">Follow along</span>
+          <span className="text-xs text-muted-2">Built by Indronil Dey</span>
           <SocialLinks />
         </div>
       </div>

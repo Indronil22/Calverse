@@ -24,13 +24,15 @@ export default function ContactPage() {
 
         <ContactForm />
 
-        <div className="mt-10">
-          <p className="text-sm text-muted mb-3">
-            Or find us on social:
-          </p>
+        <div className="mt-10 w-fit">
+  <p className="text-sm text-muted mb-3">
+    Or find us on social:
+  </p>
 
-          <SocialLinks />
-        </div>
+  <div className="flex justify-center gap-3">
+    <SocialLinks />
+  </div>
+</div>
       </main>
 
       <Footer />

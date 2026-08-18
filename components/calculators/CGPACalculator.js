@@ -18,7 +18,7 @@ export default function CGPACalculator() {
   }
 
   function addSubject() {
-    setSubjects([...subjects, { credits: 3, gradePoint: 8 }]);
+    setSubjects([...subjects, { credits: '', gradePoint: '' }]);
   }
 
   function removeSubject(index) {

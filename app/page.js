@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import CategoryCard from '@/components/CategoryCard';
 import ToolCard from '@/components/ToolCard';
 import AdSlot from '@/components/AdSlot';
+import CalculatorSearch from '@/components/CalculatorSearch';
 import { categories, getPopularCalculators } from '@/lib/calculators';
 
 export default function HomePage() {
@@ -13,15 +14,22 @@ export default function HomePage() {
     <>
       <Header />
       <main className="max-w-6xl mx-auto px-4">
-        <section className="text-center py-16">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-            Calculate <span className="text-brand-400">Everything.</span>
-          </h1>
-          <p className="mt-4 text-muted max-w-xl mx-auto">
-            🔍 What do you want to calculate? Pick a category or jump straight
-            into a popular tool below.
-          </p>
-        </section>
+        <section className="text-center py-16 md:py-20">
+  <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
+    Calculate <span className="text-brand-400">Everything.</span>
+  </h1>
+
+  <p className="mt-5 text-base md:text-lg text-muted max-w-2xl mx-auto leading-relaxed">
+    Free online calculators for money, students, vehicles, daily life
+    and India-specific calculations.
+  </p>
+
+  <p className="mt-3 text-sm text-muted-2">
+    Simple, fast and easy to use.
+  </p>
+
+  <CalculatorSearch />
+</section>
 
         <section className="grid grid-cols-2 md:grid-cols-3 gap-4 pb-16">
           {categories.map((c) => (

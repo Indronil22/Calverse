@@ -19,7 +19,7 @@ export default function DGPACalculator() {
   }
 
   function addYear() {
-    setYears([...years, { ygpa: 8, credits: 46 }]);
+    setYears([...years, { ygpa: '', credits: '' }]);
   }
 
   function removeYear(index) {

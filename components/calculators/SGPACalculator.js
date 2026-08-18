@@ -18,7 +18,7 @@ export default function SGPACalculator() {
   }
 
   function addSubject() {
-    setSubjects([...subjects, { credits: 3, gradePoint: 8 }]);
+    setSubjects([...subjects, { credits: '', gradePoint: '' }]);
   }
 
   function removeSubject(index) {

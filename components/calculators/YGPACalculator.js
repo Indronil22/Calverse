@@ -17,7 +17,7 @@ export default function YGPACalculator() {
   }
 
   function addSemester() {
-    setSemesters([...semesters, { sgpa: 8, credits: 22 }]);
+    setSemesters([...semesters, { sgpa: '', credits: '' }]);
   }
 
   function removeSemester(index) {

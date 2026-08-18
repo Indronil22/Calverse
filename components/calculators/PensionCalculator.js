@@ -1,32 +1,40 @@
 'use client';
 import { useState } from 'react';
-import { calcSIP } from '@/lib/calc-functions';
+import { calcPensionEstimate } from '@/lib/calc-functions';
 
-export default function SIPCalculator() {
+export default function PensionCalculator() {
   const [monthly, setMonthly] = useState(5000);
-  const [returnRate, setReturnRate] = useState(12);
-  const [years, setYears] = useState(10);
+  const [returnRate, setReturnRate] = useState(10);
+  const [years, setYears] = useState(25);
+  const [annuityPct, setAnnuityPct] = useState(40);
 
-  const { futureValue, invested, gains } = calcSIP(
+  const { corpus, annuityCorpus, lumpSum, estimatedMonthlyPension } = calcPensionEstimate(
     Number(monthly) || 0,
     Number(returnRate) || 0,
-    Number(years) || 1
+    Number(years) || 1,
+    Number(annuityPct) || 40
   );
 
   return (
     <div className="card p-6 md:p-8">
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-4">
-          <Field label="Monthly Investment (₹)" value={monthly} onChange={setMonthly} />
+          <Field label="Monthly Contribution (₹)" value={monthly} onChange={setMonthly} />
           <Field label="Expected Return (% per year)" value={returnRate} onChange={setReturnRate} step="0.1" />
-          <Field label="Investment Duration (years)" value={years} onChange={setYears} />
+          <Field label="Years to Retirement" value={years} onChange={setYears} />
+          <Field label="% of Corpus for Annuity" value={annuityPct} onChange={setAnnuityPct} />
         </div>
         <div className="bg-brand-500/10 border border-brand-400/30 rounded-2xl p-6 flex flex-col justify-center gap-4">
-          <Result label="Invested Amount" value={invested} />
-          <Result label="Estimated Gains" value={gains} />
-          <Result label="Future Value" value={futureValue} big />
+          <Result label="Total Corpus at Retirement" value={corpus} big />
+          <Result label="Lump Sum Withdrawable" value={lumpSum} />
+          <Result label="Est. Monthly Pension" value={estimatedMonthlyPension} />
         </div>
       </div>
+      <p className="text-xs text-muted-2 mt-4">
+        Illustrative estimate using an assumed 6% annuity payout rate —
+        actual pension depends on the annuity provider and rates at
+        retirement.
+      </p>
     </div>
   );
 }

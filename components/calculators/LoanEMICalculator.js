@@ -2,10 +2,10 @@
 import { useState } from 'react';
 import { calcEMI } from '@/lib/calc-functions';
 
-export default function EMICalculator() {
-  const [principal, setPrincipal] = useState(500000);
-  const [rate, setRate] = useState(9.5);
-  const [tenure, setTenure] = useState(60);
+export default function LoanEMICalculator({ defaultPrincipal = 800000, defaultRate = 9, defaultTenure = 60 }) {
+  const [principal, setPrincipal] = useState(defaultPrincipal);
+  const [rate, setRate] = useState(defaultRate);
+  const [tenure, setTenure] = useState(defaultTenure);
 
   const { emi, totalPayment, totalInterest } = calcEMI(
     Number(principal) || 0,
@@ -22,7 +22,7 @@ export default function EMICalculator() {
           <Field label="Tenure (months)" value={tenure} onChange={setTenure} />
         </div>
         <div className="bg-brand-500/10 border border-brand-400/30 rounded-2xl p-6 flex flex-col justify-center gap-4">
-          <Result label="Monthly EMI" value={emi} />
+          <Result label="Monthly EMI" value={emi} big />
           <Result label="Total Interest" value={totalInterest} />
           <Result label="Total Payment" value={totalPayment} />
         </div>
@@ -34,7 +34,7 @@ export default function EMICalculator() {
 function Field({ label, value, onChange, step = '1' }) {
   return (
     <label className="block">
-      <span className="text-sm text-muted">{label}</span>
+      <span className="text-sm text-muted dark:text-muted">{label}</span>
       <input
         type="number"
         step={step}
@@ -46,11 +46,11 @@ function Field({ label, value, onChange, step = '1' }) {
   );
 }
 
-function Result({ label, value }) {
+function Result({ label, value, big }) {
   return (
     <div>
       <p className="text-xs text-muted">{label}</p>
-      <p className="text-2xl font-bold">
+      <p className={big ? 'text-3xl font-extrabold text-brand-400' : 'text-2xl font-bold'}>
         ₹{value.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
       </p>
     </div>

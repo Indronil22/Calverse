@@ -1,15 +1,15 @@
 'use client';
 import { useState } from 'react';
-import { calcCGPAFromGrades, calcCGPAToPercentage } from '@/lib/calc-functions';
+import { calcCGPAFromGrades } from '@/lib/calc-functions';
 
-export default function CGPACalculator() {
+export default function SGPACalculator() {
   const [subjects, setSubjects] = useState([
     { credits: 4, gradePoint: 9 },
     { credits: 3, gradePoint: 8 },
+    { credits: 4, gradePoint: 7 },
   ]);
 
-  const cgpa = calcCGPAFromGrades(subjects);
-  const percentage = calcCGPAToPercentage(cgpa);
+  const sgpa = calcCGPAFromGrades(subjects);
 
   function updateSubject(index, field, value) {
     const next = [...subjects];
@@ -59,14 +59,10 @@ export default function CGPACalculator() {
           </button>
         </div>
 
-        <div className="bg-brand-500/10 border border-brand-400/30 rounded-2xl p-6 flex flex-col justify-center gap-4">
+        <div className="bg-brand-500/10 border border-brand-400/30 rounded-2xl p-6 flex items-center justify-center">
           <div>
-            <p className="text-xs text-muted">CGPA</p>
-            <p className="text-3xl font-extrabold text-brand-400">{cgpa.toFixed(2)}</p>
-          </div>
-          <div>
-            <p className="text-xs text-muted">Equivalent Percentage</p>
-            <p className="text-2xl font-bold">{percentage.toFixed(2)}%</p>
+            <p className="text-xs text-muted">SGPA (this semester)</p>
+            <p className="text-3xl font-extrabold text-brand-400">{sgpa.toFixed(2)}</p>
           </div>
         </div>
       </div>

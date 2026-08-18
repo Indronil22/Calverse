@@ -27,7 +27,7 @@ export default function BMICalculator() {
           <p className={`text-lg font-semibold ${colors[category]}`}>{category}</p>
         </div>
       </div>
-      <p className="text-xs text-white/40 mt-4">
+      <p className="text-xs text-muted-2 mt-4">
         BMI is a general screening tool, not a diagnosis — talk to a doctor
         for a full picture of your health.
       </p>
@@ -38,7 +38,7 @@ export default function BMICalculator() {
 function Field({ label, value, onChange }) {
   return (
     <label className="block">
-      <span className="text-sm text-white/60">{label}</span>
+      <span className="text-sm text-muted">{label}</span>
       <input
         type="number"
         className="input mt-1"

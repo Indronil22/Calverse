@@ -1,29 +1,32 @@
 'use client';
 import { useState } from 'react';
-import { calcDA } from '@/lib/calc-functions';
+import { calcRD } from '@/lib/calc-functions';
 
-export default function DACalculator() {
-  const [basicPay, setBasicPay] = useState(30000);
-  const [daPct, setDaPct] = useState(50);
+export default function RDCalculator() {
+  const [monthly, setMonthly] = useState(5000);
+  const [rate, setRate] = useState(6.5);
+  const [months, setMonths] = useState(24);
 
-  const { daAmount, totalPay } = calcDA(Number(basicPay) || 0, Number(daPct) || 0);
+  const { maturity, invested, interest } = calcRD(
+    Number(monthly) || 0,
+    Number(rate) || 0,
+    Number(months) || 1
+  );
 
   return (
     <div className="card p-6 md:p-8">
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-4">
-          <Field label="Basic Pay (₹)" value={basicPay} onChange={setBasicPay} />
-          <Field label="DA Rate (%)" value={daPct} onChange={setDaPct} step="0.1" />
+          <Field label="Monthly Deposit (₹)" value={monthly} onChange={setMonthly} />
+          <Field label="Interest Rate (% per year)" value={rate} onChange={setRate} step="0.1" />
+          <Field label="Duration (months)" value={months} onChange={setMonths} />
         </div>
         <div className="bg-brand-500/10 border border-brand-400/30 rounded-2xl p-6 flex flex-col justify-center gap-4">
-          <Result label="DA Amount" value={daAmount} />
-          <Result label="Basic Pay + DA" value={totalPay} big />
+          <Result label="Total Invested" value={invested} />
+          <Result label="Interest Earned" value={interest} />
+          <Result label="Maturity Value" value={maturity} big />
         </div>
       </div>
-      <p className="text-xs text-muted-2 mt-4">
-        DA rates are revised periodically by the government — check the latest
-        notified rate for your pay commission before relying on this figure.
-      </p>
     </div>
   );
 }

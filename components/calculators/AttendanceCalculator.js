@@ -20,20 +20,20 @@ export default function AttendanceCalculator() {
         </div>
         <div className="bg-brand-500/10 border border-brand-400/30 rounded-2xl p-6 flex flex-col justify-center gap-4">
           <div>
-            <p className="text-xs text-white/50">Current Attendance</p>
+            <p className="text-xs text-muted">Current Attendance</p>
             <p className="text-3xl font-extrabold text-brand-400">{pct.toFixed(2)}%</p>
           </div>
           <div>
             {req.status === 'ahead' ? (
-              <p className="text-sm text-white/80">
+              <p className="text-sm text-fg">
                 You&apos;re above target — you can skip{' '}
-                <span className="font-bold text-white">{req.classesCanSkip}</span> more class(es)
+                <span className="font-bold text-fg">{req.classesCanSkip}</span> more class(es)
                 and stay at or above {target}%.
               </p>
             ) : (
-              <p className="text-sm text-white/80">
+              <p className="text-sm text-fg">
                 You need to attend the next{' '}
-                <span className="font-bold text-white">{req.classesNeeded}</span> class(es) in a
+                <span className="font-bold text-fg">{req.classesNeeded}</span> class(es) in a
                 row to reach {target}%.
               </p>
             )}
@@ -47,7 +47,7 @@ export default function AttendanceCalculator() {
 function Field({ label, value, onChange }) {
   return (
     <label className="block">
-      <span className="text-sm text-white/60">{label}</span>
+      <span className="text-sm text-muted">{label}</span>
       <input
         type="number"
         className="input mt-1"

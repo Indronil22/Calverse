@@ -9,7 +9,7 @@ export default function CategoryCard({ category }) {
     >
       <span className="text-3xl">{category.emoji}</span>
       <span className="font-semibold text-lg">{category.title}</span>
-      <span className="text-sm text-white/50">{category.description}</span>
+      <span className="text-sm text-muted">{category.description}</span>
     </Link>
   );
 }

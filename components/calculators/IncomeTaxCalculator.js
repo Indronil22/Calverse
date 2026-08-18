@@ -1,32 +1,29 @@
 'use client';
 import { useState } from 'react';
-import { calcFuelCost } from '@/lib/calc-functions';
+import { calcIncomeTaxNewRegime } from '@/lib/calc-functions';
 
-export default function FuelCostCalculator() {
-  const [distance, setDistance] = useState(100);
-  const [mileage, setMileage] = useState(15);
-  const [price, setPrice] = useState(100);
-
-  const { litersNeeded, cost, costPerKm } = calcFuelCost(
-    Number(distance) || 0,
-    Number(mileage) || 1,
-    Number(price) || 0
-  );
+export default function IncomeTaxCalculator() {
+  const [income, setIncome] = useState(1200000);
+  const { tax, cess, totalTax } = calcIncomeTaxNewRegime(Number(income) || 0);
+  const takeHome = (Number(income) || 0) - totalTax;
 
   return (
     <div className="card p-6 md:p-8">
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-4">
-          <Field label="Trip Distance (km)" value={distance} onChange={setDistance} />
-          <Field label="Vehicle Mileage (km/l)" value={mileage} onChange={setMileage} />
-          <Field label="Fuel Price (₹/l)" value={price} onChange={setPrice} />
+          <Field label="Taxable Annual Income (₹)" value={income} onChange={setIncome} />
         </div>
         <div className="bg-brand-500/10 border border-brand-400/30 rounded-2xl p-6 flex flex-col justify-center gap-4">
-          <Result label="Fuel Needed" value={`${litersNeeded.toFixed(2)} L`} />
-          <Result label="Cost per km" value={`₹${costPerKm.toFixed(2)}`} />
-          <Result label="Total Trip Cost" value={`₹${cost.toFixed(0)}`} big />
+          <Result label="Income Tax" value={tax} />
+          <Result label="Health & Education Cess (4%)" value={cess} />
+          <Result label="Total Tax" value={totalTax} big />
+          <Result label="Net Take-Home" value={takeHome} />
         </div>
       </div>
+      <p className="text-xs text-muted-2 mt-4">
+        Estimated using illustrative new-regime slabs — always confirm the
+        current official slabs for the relevant financial year before filing.
+      </p>
     </div>
   );
 }
@@ -50,7 +47,7 @@ function Result({ label, value, big }) {
     <div>
       <p className="text-xs text-muted">{label}</p>
       <p className={big ? 'text-3xl font-extrabold text-brand-400' : 'text-2xl font-bold'}>
-        {value}
+        ₹{value.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
       </p>
     </div>
   );

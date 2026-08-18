@@ -2,27 +2,27 @@
 import { useState } from 'react';
 import { calcDA } from '@/lib/calc-functions';
 
-export default function DACalculator() {
-  const [basicPay, setBasicPay] = useState(30000);
-  const [daPct, setDaPct] = useState(50);
+export default function DRCalculator() {
+  const [pension, setPension] = useState(20000);
+  const [drPct, setDrPct] = useState(50);
 
-  const { daAmount, totalPay } = calcDA(Number(basicPay) || 0, Number(daPct) || 0);
+  const { daAmount, totalPay } = calcDA(Number(pension) || 0, Number(drPct) || 0);
 
   return (
     <div className="card p-6 md:p-8">
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-4">
-          <Field label="Basic Pay (₹)" value={basicPay} onChange={setBasicPay} />
-          <Field label="DA Rate (%)" value={daPct} onChange={setDaPct} step="0.1" />
+          <Field label="Basic Pension (₹)" value={pension} onChange={setPension} />
+          <Field label="DR Rate (%)" value={drPct} onChange={setDrPct} step="0.1" />
         </div>
         <div className="bg-brand-500/10 border border-brand-400/30 rounded-2xl p-6 flex flex-col justify-center gap-4">
-          <Result label="DA Amount" value={daAmount} />
-          <Result label="Basic Pay + DA" value={totalPay} big />
+          <Result label="DR Amount" value={daAmount} />
+          <Result label="Total Pension (with DR)" value={totalPay} big />
         </div>
       </div>
       <p className="text-xs text-muted-2 mt-4">
-        DA rates are revised periodically by the government — check the latest
-        notified rate for your pay commission before relying on this figure.
+        Dearness Relief is DA&apos;s pensioner equivalent, revised periodically —
+        check the latest notified rate before relying on this figure.
       </p>
     </div>
   );

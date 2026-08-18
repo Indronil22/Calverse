@@ -11,7 +11,7 @@ export default function AgeCalculator() {
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-4">
           <label className="block">
-            <span className="text-sm text-white/60">Date of Birth</span>
+            <span className="text-sm text-muted">Date of Birth</span>
             <input
               type="date"
               className="input mt-1"
@@ -24,7 +24,7 @@ export default function AgeCalculator() {
           <p className="text-3xl font-extrabold text-brand-400">
             {years}y {months}m {days}d
           </p>
-          <p className="text-sm text-white/60">{totalDays.toLocaleString('en-IN')} total days</p>
+          <p className="text-sm text-muted">{totalDays.toLocaleString('en-IN')} total days</p>
         </div>
       </div>
     </div>

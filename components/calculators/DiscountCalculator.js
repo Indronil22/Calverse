@@ -27,7 +27,7 @@ export default function DiscountCalculator() {
 function Field({ label, value, onChange }) {
   return (
     <label className="block">
-      <span className="text-sm text-white/60">{label}</span>
+      <span className="text-sm text-muted">{label}</span>
       <input
         type="number"
         className="input mt-1"
@@ -41,7 +41,7 @@ function Field({ label, value, onChange }) {
 function Result({ label, value, big }) {
   return (
     <div>
-      <p className="text-xs text-white/50">{label}</p>
+      <p className="text-xs text-muted">{label}</p>
       <p className={big ? 'text-3xl font-extrabold text-brand-400' : 'text-2xl font-bold'}>
         ₹{value.toLocaleString('en-IN', { maximumFractionDigits: 2 })}
       </p>

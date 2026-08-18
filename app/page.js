@@ -17,7 +17,7 @@ export default function HomePage() {
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
             Calculate <span className="text-brand-400">Everything.</span>
           </h1>
-          <p className="mt-4 text-white/60 max-w-xl mx-auto">
+          <p className="mt-4 text-muted max-w-xl mx-auto">
             🔍 What do you want to calculate? Pick a category or jump straight
             into a popular tool below.
           </p>

@@ -9,7 +9,7 @@ export default function ToolCard({ tool }) {
     >
       <span className="text-2xl">{tool.emoji}</span>
       <span className="font-semibold">{tool.title}</span>
-      <span className="text-xs text-white/50 line-clamp-2">{tool.description}</span>
+      <span className="text-xs text-muted line-clamp-2">{tool.description}</span>
     </Link>
   );
 }

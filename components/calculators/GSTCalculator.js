@@ -18,7 +18,7 @@ export default function GSTCalculator() {
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-4">
           <label className="block">
-            <span className="text-sm text-white/60">Amount (₹)</span>
+            <span className="text-sm text-muted">Amount (₹)</span>
             <input
               type="number"
               className="input mt-1"
@@ -28,7 +28,7 @@ export default function GSTCalculator() {
           </label>
 
           <label className="block">
-            <span className="text-sm text-white/60">GST Rate</span>
+            <span className="text-sm text-muted">GST Rate</span>
             <select
               className="input mt-1"
               value={rate}
@@ -43,13 +43,13 @@ export default function GSTCalculator() {
           <div className="flex gap-2">
             <button
               onClick={() => setMode('add')}
-              className={`flex-1 rounded-xl py-2 text-sm font-semibold ${mode === 'add' ? 'bg-brand-500' : 'bg-white/10'}`}
+              className={`flex-1 rounded-xl py-2 text-sm font-semibold ${mode === 'add' ? 'bg-brand-500' : 'toggle-btn-inactive'}`}
             >
               Add GST
             </button>
             <button
               onClick={() => setMode('remove')}
-              className={`flex-1 rounded-xl py-2 text-sm font-semibold ${mode === 'remove' ? 'bg-brand-500' : 'bg-white/10'}`}
+              className={`flex-1 rounded-xl py-2 text-sm font-semibold ${mode === 'remove' ? 'bg-brand-500' : 'toggle-btn-inactive'}`}
             >
               Remove GST
             </button>
@@ -69,7 +69,7 @@ export default function GSTCalculator() {
 function Result({ label, value }) {
   return (
     <div>
-      <p className="text-xs text-white/50">{label}</p>
+      <p className="text-xs text-muted">{label}</p>
       <p className="text-2xl font-bold">
         ₹{value.toLocaleString('en-IN', { maximumFractionDigits: 2 })}
       </p>

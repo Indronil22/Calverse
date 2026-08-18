@@ -1,28 +1,35 @@
 'use client';
 import { useState } from 'react';
-import { calcDA } from '@/lib/calc-functions';
+import { calcPPF } from '@/lib/calc-functions';
 
-export default function DACalculator() {
-  const [basicPay, setBasicPay] = useState(30000);
-  const [daPct, setDaPct] = useState(50);
+export default function PPFCalculator() {
+  const [yearly, setYearly] = useState(150000);
+  const [years, setYears] = useState(15);
+  const [rate, setRate] = useState(7.1);
 
-  const { daAmount, totalPay } = calcDA(Number(basicPay) || 0, Number(daPct) || 0);
+  const { maturity, invested, interest } = calcPPF(
+    Number(yearly) || 0,
+    Number(years) || 1,
+    Number(rate) || 7.1
+  );
 
   return (
     <div className="card p-6 md:p-8">
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-4">
-          <Field label="Basic Pay (₹)" value={basicPay} onChange={setBasicPay} />
-          <Field label="DA Rate (%)" value={daPct} onChange={setDaPct} step="0.1" />
+          <Field label="Yearly Investment (₹)" value={yearly} onChange={setYearly} />
+          <Field label="Duration (years)" value={years} onChange={setYears} />
+          <Field label="Interest Rate (% per year)" value={rate} onChange={setRate} step="0.1" />
         </div>
         <div className="bg-brand-500/10 border border-brand-400/30 rounded-2xl p-6 flex flex-col justify-center gap-4">
-          <Result label="DA Amount" value={daAmount} />
-          <Result label="Basic Pay + DA" value={totalPay} big />
+          <Result label="Total Invested" value={invested} />
+          <Result label="Interest Earned" value={interest} />
+          <Result label="Maturity Value" value={maturity} big />
         </div>
       </div>
       <p className="text-xs text-muted-2 mt-4">
-        DA rates are revised periodically by the government — check the latest
-        notified rate for your pay commission before relying on this figure.
+        PPF interest rate is set by the government each quarter — check the
+        current official rate before relying on this estimate.
       </p>
     </div>
   );

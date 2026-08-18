@@ -1,13 +1,23 @@
 // components/Footer.js
+import SocialLinks from './SocialLinks';
+
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 mt-20">
-      <div className="max-w-6xl mx-auto px-4 py-10 text-sm text-white/50 flex flex-col md:flex-row justify-between gap-4">
-        <p>© {new Date().getFullYear()} Calverse. All calculations are estimates — verify before making financial decisions.</p>
-        <div className="flex gap-4">
-          <a href="/about" className="hover:text-white">About</a>
-          <a href="/privacy" className="hover:text-white">Privacy</a>
-          <a href="/contact" className="hover:text-white">Contact</a>
+    <footer className="border-t mt-20" style={{ borderColor: 'var(--card-border)' }}>
+      <div className="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row justify-between gap-6">
+        <div>
+          <p className="text-sm text-muted">
+            © {new Date().getFullYear()} Calverse. All calculations are estimates — verify before making financial decisions.
+          </p>
+          <div className="flex gap-4 mt-3 text-sm text-muted">
+            <a href="/about" className="hover:text-fg">About</a>
+            <a href="/privacy" className="hover:text-fg">Privacy</a>
+            <a href="/contact" className="hover:text-fg">Contact</a>
+          </div>
+        </div>
+        <div className="flex flex-col gap-2 items-start md:items-end">
+          <span className="text-xs text-muted-2">Follow along</span>
+          <SocialLinks />
         </div>
       </div>
     </footer>

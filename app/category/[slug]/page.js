@@ -32,7 +32,7 @@ export default function CategoryPage({ params }) {
           <h1 className="text-3xl font-extrabold">
             {category.emoji} {category.title} Calculators
           </h1>
-          <p className="text-white/60 mt-2 max-w-2xl">{category.description}</p>
+          <p className="text-muted mt-2 max-w-2xl">{category.description}</p>
         </section>
 
         <section className="grid grid-cols-2 md:grid-cols-3 gap-4 pb-16">

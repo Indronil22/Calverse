@@ -8,8 +8,8 @@ export default function PrivacyPage() {
   return (
     <>
       <Header />
-      <main className="max-w-3xl mx-auto px-4 py-16 space-y-4 text-white/70 leading-relaxed">
-        <h1 className="text-3xl font-extrabold mb-4 text-white">Privacy Policy</h1>
+      <main className="max-w-3xl mx-auto px-4 py-16 space-y-4 text-muted leading-relaxed">
+        <h1 className="text-3xl font-extrabold mb-4 text-fg">Privacy Policy</h1>
         <p>
           Calverse does not require an account and does not store the numbers
           you enter into any calculator — all calculations run locally in

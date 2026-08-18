@@ -1,28 +1,34 @@
 'use client';
 import { useState } from 'react';
-import { calcDA } from '@/lib/calc-functions';
 
-export default function DACalculator() {
+export default function DAArrearsCalculator() {
   const [basicPay, setBasicPay] = useState(30000);
-  const [daPct, setDaPct] = useState(50);
+  const [oldDaPct, setOldDaPct] = useState(42);
+  const [newDaPct, setNewDaPct] = useState(50);
+  const [months, setMonths] = useState(6);
 
-  const { daAmount, totalPay } = calcDA(Number(basicPay) || 0, Number(daPct) || 0);
+  const oldDA = (Number(basicPay) * Number(oldDaPct)) / 100;
+  const newDA = (Number(basicPay) * Number(newDaPct)) / 100;
+  const arrearsPerMonth = newDA - oldDA;
+  const totalArrears = arrearsPerMonth * (Number(months) || 0);
 
   return (
     <div className="card p-6 md:p-8">
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-4">
           <Field label="Basic Pay (₹)" value={basicPay} onChange={setBasicPay} />
-          <Field label="DA Rate (%)" value={daPct} onChange={setDaPct} step="0.1" />
+          <Field label="Old DA Rate (%)" value={oldDaPct} onChange={setOldDaPct} step="0.1" />
+          <Field label="New DA Rate (%)" value={newDaPct} onChange={setNewDaPct} step="0.1" />
+          <Field label="Arrear Period (months)" value={months} onChange={setMonths} />
         </div>
         <div className="bg-brand-500/10 border border-brand-400/30 rounded-2xl p-6 flex flex-col justify-center gap-4">
-          <Result label="DA Amount" value={daAmount} />
-          <Result label="Basic Pay + DA" value={totalPay} big />
+          <Result label="Arrears per Month" value={arrearsPerMonth} />
+          <Result label="Total Arrears" value={totalArrears} big />
         </div>
       </div>
       <p className="text-xs text-muted-2 mt-4">
-        DA rates are revised periodically by the government — check the latest
-        notified rate for your pay commission before relying on this figure.
+        DA arrears = difference between new and old DA amount, multiplied by
+        the number of months the revised rate applies retroactively.
       </p>
     </div>
   );

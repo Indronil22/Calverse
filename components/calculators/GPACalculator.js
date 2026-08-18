@@ -1,15 +1,15 @@
 'use client';
 import { useState } from 'react';
-import { calcCGPAFromGrades, calcCGPAToPercentage } from '@/lib/calc-functions';
+import { calcGPA4Scale } from '@/lib/calc-functions';
 
-export default function CGPACalculator() {
+export default function GPACalculator() {
   const [subjects, setSubjects] = useState([
-    { credits: 4, gradePoint: 9 },
-    { credits: 3, gradePoint: 8 },
+    { credits: 3, gradePoint: 4.0 },
+    { credits: 3, gradePoint: 3.7 },
+    { credits: 4, gradePoint: 3.3 },
   ]);
 
-  const cgpa = calcCGPAFromGrades(subjects);
-  const percentage = calcCGPAToPercentage(cgpa);
+  const gpa = calcGPA4Scale(subjects);
 
   function updateSubject(index, field, value) {
     const next = [...subjects];
@@ -18,7 +18,7 @@ export default function CGPACalculator() {
   }
 
   function addSubject() {
-    setSubjects([...subjects, { credits: 3, gradePoint: 8 }]);
+    setSubjects([...subjects, { credits: 3, gradePoint: 3.0 }]);
   }
 
   function removeSubject(index) {
@@ -40,8 +40,10 @@ export default function CGPACalculator() {
               />
               <input
                 type="number"
+                step="0.1"
+                max="4"
                 className="input"
-                placeholder="Grade Point"
+                placeholder="Grade Point (0-4)"
                 value={s.gradePoint}
                 onChange={(e) => updateSubject(i, 'gradePoint', e.target.value)}
               />
@@ -59,14 +61,10 @@ export default function CGPACalculator() {
           </button>
         </div>
 
-        <div className="bg-brand-500/10 border border-brand-400/30 rounded-2xl p-6 flex flex-col justify-center gap-4">
+        <div className="bg-brand-500/10 border border-brand-400/30 rounded-2xl p-6 flex items-center justify-center">
           <div>
-            <p className="text-xs text-muted">CGPA</p>
-            <p className="text-3xl font-extrabold text-brand-400">{cgpa.toFixed(2)}</p>
-          </div>
-          <div>
-            <p className="text-xs text-muted">Equivalent Percentage</p>
-            <p className="text-2xl font-bold">{percentage.toFixed(2)}%</p>
+            <p className="text-xs text-muted">GPA (4.0 scale)</p>
+            <p className="text-3xl font-extrabold text-brand-400">{gpa.toFixed(2)}</p>
           </div>
         </div>
       </div>

@@ -43,9 +43,9 @@ export default function CalculatorPage({ params }) {
       />
       <Header />
       <main className="max-w-3xl mx-auto px-4">
-        <nav className="text-xs text-white/40 pt-8">
-          <a href="/" className="hover:text-white">Home</a> {' / '}
-          <a href={`/category/${category.slug}`} className="hover:text-white">
+        <nav className="text-xs text-muted-2 pt-8">
+          <a href="/" className="hover:text-fg">Home</a> {' / '}
+          <a href={`/category/${category.slug}`} className="hover:text-fg">
             {category.title}
           </a>
         </nav>
@@ -53,7 +53,7 @@ export default function CalculatorPage({ params }) {
         <h1 className="text-3xl font-extrabold mt-3">
           {tool.emoji} {tool.title}
         </h1>
-        <p className="text-white/60 mt-2 mb-8">{tool.description}</p>
+        <p className="text-muted mt-2 mb-8">{tool.description}</p>
 
         <Calculator title={tool.title} />
 

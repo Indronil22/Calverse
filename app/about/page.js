@@ -10,7 +10,7 @@ export default function AboutPage() {
       <Header />
       <main className="max-w-3xl mx-auto px-4 py-16">
         <h1 className="text-3xl font-extrabold mb-4">About Calverse</h1>
-        <p className="text-white/70 leading-relaxed">
+        <p className="text-muted leading-relaxed">
           Calverse is a free collection of everyday calculators — money, student,
           vehicle, health and India-specific tools — built to give quick,
           accurate estimates without clutter. Every result is computed instantly

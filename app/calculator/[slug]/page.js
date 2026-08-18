@@ -1,26 +1,71 @@
 // app/calculator/[slug]/page.js
+
 import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AdSlot from '@/components/AdSlot';
-import { calculators, getCalculator, getCategory } from '@/lib/calculators';
+import {
+  calculators,
+  getCalculator,
+  getCategory,
+} from '@/lib/calculators';
 import { getCalculatorComponent } from '@/components/calculators/registry';
 
+const SITE_URL = 'https://calverse-psi.vercel.app';
+
 export function generateStaticParams() {
-  return calculators.map((c) => ({ slug: c.slug }));
+  return calculators.map((c) => ({
+    slug: c.slug,
+  }));
 }
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
+
   const tool = getCalculator(slug);
 
-  if (!tool) return {};
+  if (!tool) {
+    return {};
+  }
+
+  const url = `${SITE_URL}/calculator/${tool.slug}`;
 
   return {
     title: tool.title,
+
     description: tool.description,
+
+    keywords: [
+      tool.title,
+      `${tool.title} online`,
+      `free ${tool.title}`,
+      `${tool.title} India`,
+      'online calculator',
+      'free calculator',
+    ],
+
     alternates: {
-      canonical: `/calculator/${tool.slug}`,
+      canonical: url,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+
+    openGraph: {
+      title: `${tool.title} | Calverse`,
+      description: tool.description,
+      url,
+      siteName: 'Calverse',
+      type: 'website',
+      locale: 'en_IN',
+    },
+
+    twitter: {
+      card: 'summary',
+      title: `${tool.title} | Calverse`,
+      description: tool.description,
     },
   };
 }
@@ -30,21 +75,36 @@ export default async function CalculatorPage({ params }) {
 
   const tool = getCalculator(slug);
 
-  if (!tool) notFound();
+  if (!tool) {
+    notFound();
+  }
 
   const category = getCategory(tool.category);
+
   const Calculator = getCalculatorComponent(tool.slug);
+
+  const calculatorUrl = `${SITE_URL}/calculator/${tool.slug}`;
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: tool.title,
+    url: calculatorUrl,
     applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Any',
     description: tool.description,
+    isAccessibleForFree: true,
+
     offers: {
       '@type': 'Offer',
       price: '0',
-      priceCurrency: 'USD',
+      priceCurrency: 'INR',
+    },
+
+    publisher: {
+      '@type': 'Organization',
+      name: 'Calverse',
+      url: SITE_URL,
     },
   };
 
@@ -60,7 +120,11 @@ export default async function CalculatorPage({ params }) {
       <Header />
 
       <main className="max-w-3xl mx-auto px-4">
-        <nav className="text-xs text-muted-2 pt-8 flex items-center gap-2">
+        {/* Breadcrumb */}
+        <nav
+          aria-label="Breadcrumb"
+          className="text-xs text-muted-2 pt-8 flex items-center gap-2"
+        >
           <a
             href="/"
             className="hover:text-fg transition-colors"
@@ -84,6 +148,7 @@ export default async function CalculatorPage({ params }) {
           </span>
         </nav>
 
+        {/* Page heading */}
         <div className="mt-6 mb-8">
           <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">
             {tool.emoji} {tool.title}
@@ -94,8 +159,10 @@ export default async function CalculatorPage({ params }) {
           </p>
         </div>
 
+        {/* Calculator */}
         <Calculator title={tool.title} />
 
+        {/* Advertisement */}
         <AdSlot className="my-12" />
       </main>
 

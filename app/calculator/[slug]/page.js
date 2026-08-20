@@ -16,8 +16,8 @@ import { getCalculatorComponent } from '@/components/calculators/registry';
 const SITE_URL = 'https://thecalculate.vercel.app';
 
 export function generateStaticParams() {
-  return calculators.map((c) => ({
-    slug: c.slug,
+  return calculators.map((calculator) => ({
+    slug: calculator.slug,
   }));
 }
 
@@ -32,18 +32,26 @@ export async function generateMetadata({ params }) {
 
   const url = `${SITE_URL}/calculator/${tool.slug}`;
 
-  return {
-    title: tool.title,
+  const title = `${tool.title} Online - Free Calculator`;
 
-    description: tool.description,
+  const description =
+    `${tool.description} Use this free online ${tool.title.toLowerCase()} ` +
+    'with instant results. No login required.';
+
+  return {
+    title,
+
+    description,
 
     keywords: [
       tool.title,
       `${tool.title} online`,
       `free ${tool.title}`,
       `${tool.title} India`,
+      `online ${tool.title}`,
+      `${tool.title} calculator`,
+      'free online calculator',
       'online calculator',
-      'free calculator',
     ],
 
     alternates: {
@@ -53,28 +61,21 @@ export async function generateMetadata({ params }) {
     robots: {
       index: true,
       follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-        'max-video-preview': -1,
-      },
     },
 
     openGraph: {
-      title: `${tool.title} | TheCalculate`,
-      description: tool.description,
+      title: `${tool.title} | theCalculate`,
+      description,
       url,
-      siteName: 'TheCalculate',
+      siteName: 'theCalculate',
       type: 'website',
       locale: 'en_IN',
     },
 
     twitter: {
       card: 'summary',
-      title: `${tool.title} | TheCalculate`,
-      description: tool.description,
+      title: `${tool.title} | theCalculate`,
+      description,
     },
   };
 }
@@ -95,21 +96,26 @@ export default async function CalculatorPage({ params }) {
   const calculatorUrl = `${SITE_URL}/calculator/${tool.slug}`;
 
   /*
-   * Structured data for the calculator
+   * Structured data for Google
    */
   const jsonLd = {
     '@context': 'https://schema.org',
+
     '@type': 'WebApplication',
 
     name: tool.title,
 
     url: calculatorUrl,
 
+    description: tool.description,
+
     applicationCategory: 'UtilitiesApplication',
+
+    applicationSubCategory: 'Calculator',
 
     operatingSystem: 'Any',
 
-    description: tool.description,
+    browserRequirements: 'Requires JavaScript',
 
     isAccessibleForFree: true,
 
@@ -121,7 +127,7 @@ export default async function CalculatorPage({ params }) {
 
     publisher: {
       '@type': 'Organization',
-      name: 'TheCalculate',
+      name: 'theCalculate',
       url: SITE_URL,
     },
   };
@@ -131,6 +137,7 @@ export default async function CalculatorPage({ params }) {
    */
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
+
     '@type': 'BreadcrumbList',
 
     itemListElement: [
@@ -208,7 +215,8 @@ export default async function CalculatorPage({ params }) {
         </nav>
 
         {/* Page heading */}
-        <div className="mt-6 mb-8">
+        <header className="mt-6 mb-8">
+
           <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">
             {tool.emoji} {tool.title}
           </h1>
@@ -216,10 +224,13 @@ export default async function CalculatorPage({ params }) {
           <p className="text-muted mt-3 max-w-2xl leading-relaxed">
             {tool.description}
           </p>
-        </div>
+
+        </header>
 
         {/* Calculator */}
-        <Calculator title={tool.title} />
+        <section aria-label={`${tool.title} tool`}>
+          <Calculator title={tool.title} />
+        </section>
 
         {/* Advertisement */}
         <AdSlot className="my-12" />

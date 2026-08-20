@@ -1,4 +1,4 @@
-import { MetadataRoute } from 'next';
+// app/robots.js
 
 export default function robots() {
   return {
@@ -6,7 +6,6 @@ export default function robots() {
       userAgent: '*',
       allow: '/',
     },
-
     sitemap: 'https://thecalculate.vercel.app/sitemap.xml',
   };
 }

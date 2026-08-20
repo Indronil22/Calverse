@@ -4,14 +4,16 @@ import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AdSlot from '@/components/AdSlot';
+
 import {
   calculators,
   getCalculator,
   getCategory,
 } from '@/lib/calculators';
+
 import { getCalculatorComponent } from '@/components/calculators/registry';
 
-const SITE_URL = 'https://calverse-psi.vercel.app';
+const SITE_URL = 'https://thecalculate.vercel.app';
 
 export function generateStaticParams() {
   return calculators.map((c) => ({
@@ -51,20 +53,27 @@ export async function generateMetadata({ params }) {
     robots: {
       index: true,
       follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+        'max-video-preview': -1,
+      },
     },
 
     openGraph: {
-      title: `${tool.title} | theCalculate`,
+      title: `${tool.title} | TheCalculate`,
       description: tool.description,
       url,
-      siteName: 'theCalculate',
+      siteName: 'TheCalculate',
       type: 'website',
       locale: 'en_IN',
     },
 
     twitter: {
       card: 'summary',
-      title: `${tool.title} | theCalculate`,
+      title: `${tool.title} | TheCalculate`,
       description: tool.description,
     },
   };
@@ -85,14 +94,23 @@ export default async function CalculatorPage({ params }) {
 
   const calculatorUrl = `${SITE_URL}/calculator/${tool.slug}`;
 
+  /*
+   * Structured data for the calculator
+   */
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
+
     name: tool.title,
+
     url: calculatorUrl,
+
     applicationCategory: 'UtilitiesApplication',
+
     operatingSystem: 'Any',
+
     description: tool.description,
+
     isAccessibleForFree: true,
 
     offers: {
@@ -103,13 +121,45 @@ export default async function CalculatorPage({ params }) {
 
     publisher: {
       '@type': 'Organization',
-      name: 'theCalculate',
+      name: 'TheCalculate',
       url: SITE_URL,
     },
   };
 
+  /*
+   * Breadcrumb structured data
+   */
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_URL,
+      },
+
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: category.title,
+        item: `${SITE_URL}/category/${category.slug}`,
+      },
+
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: tool.title,
+        item: calculatorUrl,
+      },
+    ],
+  };
+
   return (
     <>
+      {/* Calculator structured data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -117,9 +167,18 @@ export default async function CalculatorPage({ params }) {
         }}
       />
 
+      {/* Breadcrumb structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd),
+        }}
+      />
+
       <Header />
 
       <main className="max-w-3xl mx-auto px-4">
+
         {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
@@ -164,6 +223,7 @@ export default async function CalculatorPage({ params }) {
 
         {/* Advertisement */}
         <AdSlot className="my-12" />
+
       </main>
 
       <Footer />

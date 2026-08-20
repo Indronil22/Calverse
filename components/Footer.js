@@ -12,7 +12,7 @@ export default function Footer() {
         {/* Left side */}
         <div className="text-center md:text-left">
           <p className="text-sm text-muted">
-            © {new Date().getFullYear()} Calverse. All calculations are estimates — verify before making financial decisions.
+            © {new Date().getFullYear()} theCalculate. All calculations are estimates — verify before making financial decisions.
           </p>
 
           <div className="flex justify-center md:justify-start gap-4 mt-3 text-sm text-muted">

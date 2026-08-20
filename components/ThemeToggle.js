@@ -5,7 +5,7 @@ export default function ThemeToggle() {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    const stored = localStorage.getItem('calverse-theme');
+    const stored = localStorage.getItem('theCalculate-theme');
     const dark = stored ? stored === 'dark' : true;
     setIsDark(dark);
     document.documentElement.classList.toggle('dark', dark);
@@ -15,7 +15,7 @@ export default function ThemeToggle() {
     const next = !isDark;
     setIsDark(next);
     document.documentElement.classList.toggle('dark', next);
-    localStorage.setItem('calverse-theme', next ? 'dark' : 'light');
+    localStorage.setItem('theCalculate-theme', next ? 'dark' : 'light');
   }
 
   return (

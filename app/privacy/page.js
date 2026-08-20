@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 export const metadata = {
   title: 'Privacy Policy',
   description:
-    'Privacy Policy for Calverse, including information about calculators, cookies, advertising, analytics, and contact information.',
+    'Privacy Policy for theCalculate, including information about calculators, cookies, advertising, analytics, and contact information.',
 };
 
 export default function PrivacyPage() {
@@ -30,7 +30,7 @@ export default function PrivacyPage() {
             </h2>
 
             <p>
-              Welcome to Calverse. We respect your privacy and are committed
+              Welcome to theCalculate. We respect your privacy and are committed
               to being transparent about how information may be handled when
               you use our website and calculators.
             </p>
@@ -42,7 +42,7 @@ export default function PrivacyPage() {
             </h2>
 
             <p>
-              Calverse does not require users to create an account to use its
+              theCalculate does not require users to create an account to use its
               calculators. We generally do not collect or store the numbers
               or values entered into our calculators. Calculations are
               primarily performed locally in your web browser.
@@ -52,7 +52,7 @@ export default function PrivacyPage() {
               If you contact us through our Contact page, we may receive
               information such as your name, email address, subject and
               message. This information is used to respond to your enquiry,
-              investigate issues and improve Calverse.
+              investigate issues and improve theCalculate.
             </p>
           </section>
 
@@ -62,7 +62,7 @@ export default function PrivacyPage() {
             </h2>
 
             <p>
-              Most calculators on Calverse process the information you enter
+              Most calculators on theCalculate process the information you enter
               directly in your browser. We do not intentionally store your
               calculator inputs on our servers.
             </p>
@@ -80,7 +80,7 @@ export default function PrivacyPage() {
             </h2>
 
             <p>
-              Calverse may use cookies and similar technologies to provide
+              theCalculate may use cookies and similar technologies to provide
               website functionality, remember certain preferences, understand
               website usage and support advertising services.
             </p>
@@ -97,7 +97,7 @@ export default function PrivacyPage() {
             </h2>
 
             <p>
-              Calverse may display advertisements provided by third-party
+              theCalculate may display advertisements provided by third-party
               advertising services, including Google AdSense.
             </p>
 
@@ -105,12 +105,12 @@ export default function PrivacyPage() {
               Advertising providers may use cookies or similar technologies
               to display, personalize, measure or improve advertisements.
               These providers may collect information about your visits to
-              Calverse and other websites in accordance with their own
+              theCalculate and other websites in accordance with their own
               privacy policies.
             </p>
 
             <p className="mt-3">
-              Calverse does not directly control the information collected
+              theCalculate does not directly control the information collected
               by third-party advertising providers.
             </p>
           </section>
@@ -122,7 +122,7 @@ export default function PrivacyPage() {
 
             <p>
               We may use analytics services to understand how visitors use
-              Calverse. Analytics information can help us identify popular
+              theCalculate. Analytics information can help us identify popular
               calculators, improve website performance and understand general
               traffic patterns.
             </p>
@@ -163,7 +163,7 @@ export default function PrivacyPage() {
             </h2>
 
             <p>
-              Calverse may use third-party services for website hosting,
+              theCalculate may use third-party services for website hosting,
               email delivery, analytics, advertising and other technical
               functions.
             </p>
@@ -181,7 +181,7 @@ export default function PrivacyPage() {
             </h2>
 
             <p>
-              Calverse may contain links to external websites or services.
+              theCalculate may contain links to external websites or services.
               We are not responsible for the privacy practices, content or
               security of third-party websites.
             </p>
@@ -194,7 +194,7 @@ export default function PrivacyPage() {
 
             <p>
               We take reasonable measures to protect information that is
-              handled through Calverse. However, no method of transmission
+              handled through theCalculate. However, no method of transmission
               over the internet or method of electronic storage is completely
               secure, and we cannot guarantee absolute security.
             </p>
@@ -206,7 +206,7 @@ export default function PrivacyPage() {
             </h2>
 
             <p>
-              Calverse is a general-purpose website and is not specifically
+              theCalculate is a general-purpose website and is not specifically
               directed toward children. We do not knowingly request personal
               information from children.
             </p>
@@ -218,7 +218,7 @@ export default function PrivacyPage() {
             </h2>
 
             <p>
-              We may update this Privacy Policy from time to time as Calverse
+              We may update this Privacy Policy from time to time as theCalculate
               develops, new services are introduced, or applicable
               requirements change. Any updated version will be published on
               this page.
@@ -232,7 +232,7 @@ export default function PrivacyPage() {
 
             <p>
               If you have any questions about this Privacy Policy or how
-              Calverse handles information, please visit our{' '}
+              theCalculate handles information, please visit our{' '}
               <a
                 href="/contact"
                 className="text-purple-400 hover:text-purple-300 hover:underline"

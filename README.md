@@ -1,4 +1,4 @@
-# Calverse — Calculate Everything
+# theCalculate — Calculate Everything
 
 A free calculator hub built with Next.js + Tailwind CSS: money, student,
 vehicle, daily-life, India-specific and health calculators, organized under

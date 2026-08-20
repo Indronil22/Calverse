@@ -5,8 +5,8 @@ export const metadata = {
   metadataBase: new URL('https://calverse-psi.vercel.app'),
 
   title: {
-    default: 'Calverse — Free Online Calculators',
-    template: '%s | Calverse',
+    default: 'theCalculate — Free Online Calculators',
+    template: '%s | theCalculate',
   },
 
   description:
@@ -50,18 +50,18 @@ export const metadata = {
   },
 
   openGraph: {
-    title: 'Calverse — Free Online Calculators',
+    title: 'theCalculate — Free Online Calculators',
     description:
       'Free online calculators for money, students, vehicles, daily life, health and India-specific calculations.',
     type: 'website',
-    siteName: 'Calverse',
+    siteName: 'theCalculate',
     locale: 'en_IN',
     url: 'https://calverse-psi.vercel.app',
   },
 
   twitter: {
     card: 'summary_large_image',
-    title: 'Calverse — Free Online Calculators',
+    title: 'theCalculate — Free Online Calculators',
     description:
       'Free online calculators for money, students, vehicles, daily life, health and India-specific calculations.',
   },
@@ -71,7 +71,7 @@ export const metadata = {
 const themeInitScript = `
 (function() {
   try {
-    var stored = localStorage.getItem('calverse-theme');
+    var stored = localStorage.getItem('theCalculate-theme');
     var dark = stored ? stored === 'dark' : true;
 
     if (dark) {

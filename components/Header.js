@@ -8,7 +8,7 @@ export default function Header() {
     <header className="border-b" style={{ borderColor: 'var(--card-border)' }}>
       <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         <Link href="/" className="text-2xl font-extrabold tracking-tight">
-          Cal<span className="text-brand-400">verse</span>
+          the<span className="text-brand-400">Calculate</span>
         </Link>
         <nav className="hidden md:flex gap-5 text-sm text-muted">
           {categories.map((c) => (

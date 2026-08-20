@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 export const metadata = {
   title: 'About',
   description:
-    'Learn more about Calverse, a free collection of practical online calculators for everyday calculations.',
+    'Learn more about theCalculate, a free collection of practical online calculators for everyday calculations.',
 };
 
 export default function AboutPage() {
@@ -15,20 +15,20 @@ export default function AboutPage() {
 
       <main className="max-w-3xl mx-auto px-4 py-16">
         <h1 className="text-3xl font-extrabold mb-4 text-fg">
-          About Calverse
+          About theCalculate
         </h1>
 
         <div className="space-y-7 text-muted leading-relaxed">
 
           <p>
-            Calverse is a free collection of practical online calculators
+            theCalculate is a free collection of practical online calculators
             designed to make everyday calculations simple, fast and
             accessible.
           </p>
 
           <p>
             From financial and student calculations to vehicle, health,
-            daily-life and India-specific tools, Calverse brings useful
+            daily-life and India-specific tools, theCalculate brings useful
             calculators together in one place.
           </p>
 
@@ -51,7 +51,7 @@ export default function AboutPage() {
             </h2>
 
             <p className="mb-3">
-              Calverse provides calculators across several categories,
+              theCalculate provides calculators across several categories,
               including:
             </p>
 
@@ -71,7 +71,7 @@ export default function AboutPage() {
             </h2>
 
             <p>
-              Calverse is designed with simplicity in mind. Our calculators
+              theCalculate is designed with simplicity in mind. Our calculators
               are built to provide results quickly with a clean interface
               that works across desktop and mobile devices.
             </p>
@@ -89,7 +89,7 @@ export default function AboutPage() {
 
             <p>
               We are continuously working on adding new calculators,
-              improving existing tools and making Calverse more useful.
+              improving existing tools and making theCalculate more useful.
               Suggestions and feedback from visitors can help us decide what
               to build next.
             </p>

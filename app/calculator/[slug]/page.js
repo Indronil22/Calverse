@@ -54,17 +54,17 @@ export async function generateMetadata({ params }) {
     },
 
     openGraph: {
-      title: `${tool.title} | Calverse`,
+      title: `${tool.title} | theCalculate`,
       description: tool.description,
       url,
-      siteName: 'Calverse',
+      siteName: 'theCalculate',
       type: 'website',
       locale: 'en_IN',
     },
 
     twitter: {
       card: 'summary',
-      title: `${tool.title} | Calverse`,
+      title: `${tool.title} | theCalculate`,
       description: tool.description,
     },
   };
@@ -103,7 +103,7 @@ export default async function CalculatorPage({ params }) {
 
     publisher: {
       '@type': 'Organization',
-      name: 'Calverse',
+      name: 'theCalculate',
       url: SITE_URL,
     },
   };

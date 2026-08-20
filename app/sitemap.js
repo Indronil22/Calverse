@@ -2,10 +2,13 @@
 import { categories, calculators } from '@/lib/calculators';
 
 export default function sitemap() {
-  const base = 'https://calverse.example.com';
+  const base = 'https://thecalculate.vercel.app';
 
   const staticRoutes = [
-    { url: `${base}/`, priority: 1 },
+    { 
+      url: `${base}/`, 
+      priority: 1 
+    },
   ];
 
   const categoryRoutes = categories.map((c) => ({
@@ -18,5 +21,9 @@ export default function sitemap() {
     priority: 0.9,
   }));
 
-  return [...staticRoutes, ...categoryRoutes, ...calculatorRoutes];
+  return [
+    ...staticRoutes,
+    ...categoryRoutes,
+    ...calculatorRoutes,
+  ];
 }

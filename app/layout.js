@@ -2,20 +2,21 @@
 import './globals.css';
 
 export const metadata = {
-  metadataBase: new URL('https://calverse-psi.vercel.app'),
+  metadataBase: new URL('https://thecalculate.vercel.app'),
 
   title: {
-    default: 'theCalculate — Free Online Calculators',
-    template: '%s | theCalculate',
+    default: 'TheCalculate — Free Online Calculators',
+    template: '%s | TheCalculate',
   },
 
   description:
-    'Free online calculators for money, students, vehicles, daily life, health and India-specific calculations. Calculate EMI, GST, SIP, CGPA, DA, HRA, BMI and more.',
+    'Free online calculators for EMI, GST, SIP, CGPA, SGPA, YGPA, DGPA, DA, HRA, BMI, age, finance and more. Fast, accurate and easy-to-use calculators.',
 
   keywords: [
+    'calculator',
     'online calculator',
     'free calculator',
-    'calculator India',
+    'calculators',
     'EMI calculator',
     'GST calculator',
     'SIP calculator',
@@ -26,16 +27,13 @@ export const metadata = {
     'DA calculator',
     'HRA calculator',
     'BMI calculator',
-    'salary calculator',
+    'age calculator',
+    'calculator India',
   ],
 
-  authors: [
-    {
-      name: 'Indronil Dey',
-    },
-  ],
-
-  creator: 'Indronil Dey',
+  alternates: {
+    canonical: '/',
+  },
 
   robots: {
     index: true,
@@ -50,28 +48,27 @@ export const metadata = {
   },
 
   openGraph: {
-    title: 'theCalculate — Free Online Calculators',
-    description:
-      'Free online calculators for money, students, vehicles, daily life, health and India-specific calculations.',
     type: 'website',
-    siteName: 'theCalculate',
-    locale: 'en_IN',
-    url: 'https://calverse-psi.vercel.app',
+    url: 'https://thecalculate.vercel.app/',
+    siteName: 'TheCalculate',
+    title: 'TheCalculate — Free Online Calculators',
+    description:
+      'Free online calculators for finance, students, vehicles, daily life and India-specific calculations.',
   },
 
   twitter: {
     card: 'summary_large_image',
-    title: 'theCalculate — Free Online Calculators',
+    title: 'TheCalculate — Free Online Calculators',
     description:
-      'Free online calculators for money, students, vehicles, daily life, health and India-specific calculations.',
+      'Free online calculators for EMI, GST, SIP, CGPA, SGPA, BMI, age and more.',
   },
 };
 
-// Runs before paint so the correct theme applies immediately.
+// Inline script runs before paint so the correct theme applies immediately.
 const themeInitScript = `
 (function() {
   try {
-    var stored = localStorage.getItem('theCalculate-theme');
+    var stored = localStorage.getItem('calverse-theme');
     var dark = stored ? stored === 'dark' : true;
 
     if (dark) {

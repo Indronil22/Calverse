@@ -1,10 +1,12 @@
-// app/robots.js
+import { MetadataRoute } from 'next';
+
 export default function robots() {
   return {
     rules: {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://calverse.example.com/sitemap.xml',
+
+    sitemap: 'https://thecalculate.vercel.app/sitemap.xml',
   };
 }

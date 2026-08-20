@@ -8,6 +8,7 @@ export default function FDCalculator() {
   const [rate, setRate] = useState(7);
   const [years, setYears] = useState(5);
   const [compounding, setCompounding] = useState(4);
+  const [isOpen, setIsOpen] = useState(false);
 
   const { maturity, interest } = calcFD(
     Number(principal) || 0,
@@ -16,13 +17,28 @@ export default function FDCalculator() {
     Number(compounding) || 4
   );
 
+  const options = [
+    { value: 1, label: 'Yearly' },
+    { value: 2, label: 'Half-Yearly' },
+    { value: 4, label: 'Quarterly' },
+    { value: 12, label: 'Monthly' },
+  ];
+
+  const selectedOption = options.find(
+    (option) => option.value === Number(compounding)
+  );
+
   return (
     <div className="space-y-12">
 
-      {/* Calculator */}
+      {/* =========================
+          FD CALCULATOR
+      ========================== */}
+
       <div className="card p-6 md:p-8">
         <div className="grid md:grid-cols-2 gap-6">
 
+          {/* INPUTS */}
           <div className="space-y-4">
 
             <Field
@@ -45,25 +61,71 @@ export default function FDCalculator() {
               step="0.1"
             />
 
-            <label className="block">
+            {/* COMPOUNDING FREQUENCY */}
+            <div className="block">
+
               <span className="text-sm text-muted">
                 Compounding Frequency
               </span>
 
-              <select
-                className="input mt-1"
-                value={compounding}
-                onChange={(e) => setCompounding(e.target.value)}
-              >
-                <option value={1}>Yearly</option>
-                <option value={2}>Half-Yearly</option>
-                <option value={4}>Quarterly</option>
-                <option value={12}>Monthly</option>
-              </select>
-            </label>
+              <div className="relative mt-1">
+
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="fd-dropdown-button"
+                >
+                  <span>
+                    {selectedOption?.label}
+                  </span>
+
+                  <svg
+                    className={`w-5 h-5 transition-transform ${
+                      isOpen ? 'rotate-180' : ''
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+
+                {isOpen && (
+                  <div className="fd-dropdown-menu">
+
+                    {options.map((option) => (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() => {
+                          setCompounding(option.value);
+                          setIsOpen(false);
+                        }}
+                        className={`fd-dropdown-option ${
+                          Number(compounding) === option.value
+                            ? 'selected'
+                            : ''
+                        }`}
+                      >
+                        {option.label}
+                      </button>
+                    ))}
+
+                  </div>
+                )}
+
+              </div>
+            </div>
 
           </div>
 
+          {/* RESULTS */}
           <div className="bg-brand-500/10 border border-brand-400/30 rounded-2xl p-6 flex flex-col justify-center gap-4">
 
             <Result
@@ -82,7 +144,11 @@ export default function FDCalculator() {
         </div>
       </div>
 
-      {/* What is FD */}
+
+      {/* =========================
+          WHAT IS FD
+      ========================== */}
+
       <section className="space-y-4">
 
         <h2 className="text-2xl md:text-3xl font-bold">
@@ -90,33 +156,60 @@ export default function FDCalculator() {
         </h2>
 
         <p className="text-muted leading-relaxed">
-          A Fixed Deposit (FD) is a savings and investment option where you
-          deposit a lump sum amount with a bank or financial institution for
-          a fixed period at a predetermined interest rate. At maturity, you
-          receive your original deposit along with the interest earned.
+          A Fixed Deposit (FD) is a financial investment in which you deposit
+          a lump sum amount with a bank or financial institution for a
+          predetermined period at a specified interest rate. At maturity,
+          you receive the principal amount along with the interest earned.
         </p>
 
         <p className="text-muted leading-relaxed">
-          The returns from a fixed deposit depend mainly on the principal
-          amount, interest rate, investment duration and compounding frequency.
+          The maturity value of an FD depends on factors such as the deposit
+          amount, interest rate, investment tenure and compounding frequency.
           This FD calculator helps you estimate the interest earned and
-          maturity amount before investing.
+          maturity amount based on these inputs.
         </p>
 
       </section>
 
-      {/* How FD is calculated */}
+
+      {/* =========================
+          HOW FD CALCULATOR WORKS
+      ========================== */}
+
       <section className="space-y-5">
 
         <h2 className="text-2xl md:text-3xl font-bold">
-          How is FD Interest Calculated?
+          How Does an FD Calculator Work?
         </h2>
 
         <p className="text-muted leading-relaxed">
-          For a cumulative fixed deposit, compound interest is generally used
-          to calculate the maturity value. The calculation depends on the
-          principal amount, annual interest rate, compounding frequency and
-          investment duration.
+          An FD calculator uses the principal amount, annual interest rate,
+          investment duration and compounding frequency to estimate the
+          maturity value of a fixed deposit.
+        </p>
+
+        <p className="text-muted leading-relaxed">
+          When interest is compounded, the interest earned during each
+          compounding period is added to the deposit. Future interest is then
+          calculated on the increased balance.
+        </p>
+
+      </section>
+
+
+      {/* =========================
+          FD FORMULA
+      ========================== */}
+
+      <section className="space-y-5">
+
+        <h2 className="text-2xl md:text-3xl font-bold">
+          FD Interest Calculation Formula
+        </h2>
+
+        <p className="text-muted leading-relaxed">
+          The compound interest formula commonly used to calculate the
+          maturity value of a fixed deposit is:
         </p>
 
         <div className="bg-brand-500/5 border border-brand-400/20 rounded-2xl p-6 text-center overflow-x-auto">
@@ -142,7 +235,7 @@ export default function FDCalculator() {
           </p>
 
           <p>
-            <strong className="text-fg">n</strong> = Number of times interest is compounded per year
+            <strong className="text-fg">n</strong> = Number of compounding periods per year
           </p>
 
           <p>
@@ -152,17 +245,21 @@ export default function FDCalculator() {
         </div>
 
         <p className="text-muted leading-relaxed">
-          The total interest earned can be calculated by subtracting the
-          original principal amount from the maturity amount.
+          The interest earned can then be estimated by subtracting the
+          original principal from the maturity amount.
         </p>
 
       </section>
 
-      {/* How to use */}
+
+      {/* =========================
+          HOW TO USE
+      ========================== */}
+
       <section className="space-y-5">
 
         <h2 className="text-2xl md:text-3xl font-bold">
-          How to Use This FD Calculator
+          How to Use the FD Calculator
         </h2>
 
         <ol className="list-decimal list-inside space-y-3 text-muted leading-relaxed">
@@ -172,7 +269,7 @@ export default function FDCalculator() {
           </li>
 
           <li>
-            Enter the annual FD interest rate.
+            Enter the annual interest rate offered on the deposit.
           </li>
 
           <li>
@@ -180,19 +277,23 @@ export default function FDCalculator() {
           </li>
 
           <li>
-            Select the applicable compounding frequency.
+            Select the compounding frequency.
           </li>
 
           <li>
-            The calculator will instantly show the estimated interest earned
-            and maturity value.
+            The calculator will instantly estimate your interest earned and
+            maturity value.
           </li>
 
         </ol>
 
       </section>
 
-      {/* Example */}
+
+      {/* =========================
+          EXAMPLE
+      ========================== */}
+
       <section className="space-y-5">
 
         <h2 className="text-2xl md:text-3xl font-bold">
@@ -200,10 +301,9 @@ export default function FDCalculator() {
         </h2>
 
         <p className="text-muted leading-relaxed">
-          Suppose you invest ₹1,00,000 in a fixed deposit at an annual
-          interest rate of 7% for 5 years with quarterly compounding.
-          The calculator uses these values to estimate the interest earned
-          and the final maturity amount.
+          Suppose you invest ₹1,00,000 in an FD at an annual interest rate of
+          7% for 5 years with quarterly compounding. Enter these values into
+          the calculator to estimate the interest earned and maturity amount.
         </p>
 
         <div className="bg-brand-500/5 border border-brand-400/20 rounded-2xl p-5">
@@ -211,7 +311,7 @@ export default function FDCalculator() {
           <div className="grid sm:grid-cols-2 gap-4 text-sm">
 
             <div>
-              <p className="text-muted">Principal</p>
+              <p className="text-muted">Principal Amount</p>
               <p className="font-semibold">₹1,00,000</p>
             </div>
 
@@ -236,22 +336,28 @@ export default function FDCalculator() {
 
       </section>
 
-      {/* Factors */}
+
+      {/* =========================
+          FACTORS
+      ========================== */}
+
       <section className="space-y-5">
 
         <h2 className="text-2xl md:text-3xl font-bold">
           Factors That Affect FD Returns
         </h2>
 
-        <div className="space-y-4">
+        <div className="space-y-5">
 
           <div>
             <h3 className="text-lg font-semibold">
-              1. Deposit Amount
+              1. Principal Amount
             </h3>
+
             <p className="text-muted leading-relaxed mt-1">
-              A higher principal amount generally results in higher interest
-              earnings when the interest rate and tenure remain the same.
+              The principal is the amount initially deposited into the fixed
+              deposit. A larger deposit can result in greater interest
+              earnings when other factors remain unchanged.
             </p>
           </div>
 
@@ -259,9 +365,10 @@ export default function FDCalculator() {
             <h3 className="text-lg font-semibold">
               2. Interest Rate
             </h3>
+
             <p className="text-muted leading-relaxed mt-1">
               The interest rate offered by the bank or financial institution
-              directly affects the maturity value of the FD.
+              directly affects the amount of interest earned on the deposit.
             </p>
           </div>
 
@@ -269,9 +376,10 @@ export default function FDCalculator() {
             <h3 className="text-lg font-semibold">
               3. Investment Tenure
             </h3>
+
             <p className="text-muted leading-relaxed mt-1">
-              A longer investment period can increase the total interest
-              earned, depending on the applicable interest rate.
+              The duration for which the money remains invested affects the
+              total interest accumulated over the FD period.
             </p>
           </div>
 
@@ -279,9 +387,11 @@ export default function FDCalculator() {
             <h3 className="text-lg font-semibold">
               4. Compounding Frequency
             </h3>
+
             <p className="text-muted leading-relaxed mt-1">
-              More frequent compounding can affect the final maturity amount
-              because interest is added to the deposit at different intervals.
+              Interest can be compounded at different intervals, such as
+              yearly, half-yearly, quarterly or monthly. The compounding
+              frequency affects the final maturity amount.
             </p>
           </div>
 
@@ -289,7 +399,11 @@ export default function FDCalculator() {
 
       </section>
 
-      {/* FD vs Savings */}
+
+      {/* =========================
+          FD VS SAVINGS ACCOUNT
+      ========================== */}
+
       <section className="space-y-5">
 
         <h2 className="text-2xl md:text-3xl font-bold">
@@ -297,16 +411,20 @@ export default function FDCalculator() {
         </h2>
 
         <p className="text-muted leading-relaxed">
-          A savings account is primarily designed for regular access to your
-          money, while a fixed deposit is designed for keeping a lump sum
-          invested for a predetermined period. Fixed deposits may offer a
-          higher predetermined interest rate, while savings accounts generally
-          provide greater liquidity.
+          A savings account is generally designed for keeping money accessible
+          for everyday transactions, while a fixed deposit is designed for
+          investing a lump sum for a predetermined period. An FD generally
+          provides a predetermined interest rate for the selected tenure,
+          while a savings account offers greater liquidity.
         </p>
 
       </section>
 
-      {/* FAQ */}
+
+      {/* =========================
+          FAQ
+      ========================== */}
+
       <section className="space-y-5">
 
         <h2 className="text-2xl md:text-3xl font-bold">
@@ -319,20 +437,24 @@ export default function FDCalculator() {
             <h3 className="text-lg font-semibold">
               What is an FD calculator?
             </h3>
+
             <p className="text-muted leading-relaxed mt-2">
               An FD calculator is an online tool that estimates the interest
-              earned and maturity amount of a fixed deposit using the deposit
+              earned and maturity value of a fixed deposit using the deposit
               amount, interest rate, tenure and compounding frequency.
             </p>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold">
-              Does FD interest depend on the tenure?
+              How is FD maturity calculated?
             </h3>
+
             <p className="text-muted leading-relaxed mt-2">
-              Yes. The investment tenure is one of the factors used to
-              determine the total interest earned and maturity value.
+              FD maturity is calculated using the principal amount, applicable
+              interest rate, investment tenure and compounding frequency.
+              Compound interest calculations can be used when the FD uses
+              periodic compounding.
             </p>
           </div>
 
@@ -340,19 +462,33 @@ export default function FDCalculator() {
             <h3 className="text-lg font-semibold">
               What does quarterly compounding mean?
             </h3>
+
             <p className="text-muted leading-relaxed mt-2">
-              Quarterly compounding means interest is calculated and added to
-              the deposit four times during a year.
+              Quarterly compounding means that interest is compounded four
+              times in a year.
             </p>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold">
-              Is the FD calculator free?
+              Can I use this FD calculator for different interest rates?
             </h3>
+
             <p className="text-muted leading-relaxed mt-2">
-              Yes. You can use this online FD calculator to estimate your
-              returns without registration or login.
+              Yes. You can enter different principal amounts, interest rates,
+              durations and compounding frequencies to compare estimated FD
+              maturity values.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold">
+              Is this FD calculator free?
+            </h3>
+
+            <p className="text-muted leading-relaxed mt-2">
+              Yes. The calculator is free to use and does not require an
+              account or login.
             </p>
           </div>
 
@@ -360,15 +496,19 @@ export default function FDCalculator() {
 
       </section>
 
-      {/* Disclaimer */}
+
+      {/* =========================
+          DISCLAIMER
+      ========================== */}
+
       <section className="border-t border-border pt-6">
 
         <p className="text-xs text-muted leading-relaxed">
           <strong>Disclaimer:</strong> The results provided by this FD
           calculator are estimates for informational purposes only. Actual
-          fixed deposit returns may vary depending on the interest rate,
-          compounding method, tenure, applicable bank or financial institution
-          rules and taxes. Always check the applicable terms before making an
+          fixed deposit returns may vary depending on the applicable interest
+          rate, compounding method, tenure, bank or financial institution
+          terms and taxes. Check the applicable terms before making an
           investment decision.
         </p>
 
@@ -378,7 +518,17 @@ export default function FDCalculator() {
   );
 }
 
-function Field({ label, value, onChange, step = '1' }) {
+
+/* =========================================
+   INPUT FIELD
+========================================= */
+
+function Field({
+  label,
+  value,
+  onChange,
+  step = '1',
+}) {
   return (
     <label className="block">
 
@@ -398,7 +548,16 @@ function Field({ label, value, onChange, step = '1' }) {
   );
 }
 
-function Result({ label, value, big }) {
+
+/* =========================================
+   RESULT
+========================================= */
+
+function Result({
+  label,
+  value,
+  big,
+}) {
   return (
     <div>
 

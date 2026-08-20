@@ -148,3 +148,134 @@ button {
   }
 }
 
+/* =========================================
+   FD CALCULATOR CUSTOM DROPDOWN
+========================================= */
+
+.fd-dropdown-button {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  text-align: left;
+
+  background: #ffffff;
+  color: #111827;
+
+  border: 1px solid #d1d5db;
+  border-radius: 0.75rem;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.fd-dropdown-button:hover {
+  border-color: #8b5cf6;
+}
+
+
+/* DARK MODE */
+
+html.dark .fd-dropdown-button {
+  background: #24243b;
+  color: #ffffff;
+  border-color: rgba(167, 139, 250, 0.4);
+}
+
+html.dark .fd-dropdown-button:hover {
+  border-color: #a78bfa;
+}
+
+
+/* =========================================
+   DROPDOWN MENU
+========================================= */
+
+.fd-dropdown-menu {
+  position: absolute;
+  z-index: 50;
+
+  left: 0;
+  right: 0;
+
+  margin-top: 0.5rem;
+
+  overflow: hidden;
+
+  background: #ffffff;
+  color: #111827;
+
+  border: 1px solid #d1d5db;
+  border-radius: 0.75rem;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+/* DARK MODE */
+
+html.dark .fd-dropdown-menu {
+  background: #24243b;
+  color: #ffffff;
+  border-color: rgba(167, 139, 250, 0.4);
+}
+
+
+/* =========================================
+   DROPDOWN OPTIONS
+========================================= */
+
+.fd-dropdown-option {
+  width: 100%;
+
+  padding: 0.75rem 1rem;
+
+  display: block;
+
+  text-align: left;
+
+  background: transparent;
+  color: inherit;
+
+  border: none;
+
+  cursor: pointer;
+
+  transition: background-color 0.15s ease;
+}
+
+
+/* LIGHT MODE HOVER */
+
+.fd-dropdown-option:hover {
+  background: #f3f4f6;
+}
+
+
+/* DARK MODE HOVER */
+
+html.dark .fd-dropdown-option:hover {
+  background: rgba(139, 92, 246, 0.2);
+}
+
+
+/* SELECTED OPTION - LIGHT */
+
+.fd-dropdown-option.selected {
+  background: #f3f4f6;
+  font-weight: 600;
+}
+
+
+/* SELECTED OPTION - DARK */
+
+html.dark .fd-dropdown-option.selected {
+  background: rgba(139, 92, 246, 0.3);
+}

@@ -1,8 +1,14 @@
 // app/layout.js
+
 import './globals.css';
 
 export const metadata = {
   metadataBase: new URL('https://thecalculate.vercel.app'),
+
+  // Google Search Console verification
+  verification: {
+    google: 'lLLf187Ol0Va1PBdnH_p2Ozn6GmlXpsxYRScLxB-Zsw',
+  },
 
   title: {
     default: 'theCalculate — Free Online Calculators',
@@ -15,6 +21,7 @@ export const metadata = {
   keywords: [
     'calculator',
     'online calculator',
+    'free online calculator',
     'free calculator',
     'calculators',
     'EMI calculator',
@@ -31,6 +38,8 @@ export const metadata = {
     'DR calculator',
     'HRA calculator',
     'gratuity calculator',
+    'EPF calculator',
+    'salary calculator',
     'BMI calculator',
     'age calculator',
     'calculator India',
@@ -43,6 +52,7 @@ export const metadata = {
   robots: {
     index: true,
     follow: true,
+
     googleBot: {
       index: true,
       follow: true,
@@ -59,6 +69,7 @@ export const metadata = {
     title: 'theCalculate — Free Online Calculators',
     description:
       'Free online calculators for finance, students, vehicles, daily life and India-specific calculations.',
+    locale: 'en_IN',
   },
 
   twitter: {
@@ -69,6 +80,7 @@ export const metadata = {
   },
 };
 
+// Runs before the page paints so the correct theme loads immediately.
 const themeInitScript = `
 (function() {
   try {
@@ -86,19 +98,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-
-        {/* Google Search Console verification */}
-        <meta
-          name="google-site-verification"
-          content="<lLLf187Ol0Va1PBdnH_p2Ozn6GmlXpsxYRScLxB-Zsw />"
-        />
-
         <script
           dangerouslySetInnerHTML={{
             __html: themeInitScript,
           }}
         />
-
       </head>
 
       <body className="bg-[var(--bg)] text-[var(--fg)] min-h-screen">

@@ -47,21 +47,55 @@ export async function generateMetadata({ params }) {
 
   const url = `${SITE_URL}/calculator/${tool.slug}`;
 
+  // =======================================================
+  // DEFAULT SEO KEYWORDS
+  // =======================================================
+
+  let keywords = [
+    tool.title,
+    `${tool.title} online`,
+    `free ${tool.title}`,
+    `${tool.title} calculator`,
+    `online ${tool.title}`,
+    `${tool.title} India`,
+    'free online calculator',
+    'online calculator',
+  ];
+
+
+  // =======================================================
+  // INCOME TAX SPECIFIC SEO
+  // =======================================================
+
+  if (
+    tool.slug === 'income-tax' ||
+    tool.slug === 'income-tax-calculator'
+  ) {
+    keywords = [
+      'income tax calculator',
+      'income tax calculator India',
+      'income tax calculator online',
+      'new tax regime calculator',
+      'income tax calculator FY',
+      'tax calculator India',
+      'income tax estimator',
+      'tax liability calculator',
+      'online income tax calculator',
+      'free income tax calculator',
+    ];
+  }
+
+
+  // =======================================================
+  // FINAL METADATA
+  // =======================================================
+
   return {
     title: seo.title,
 
     description: seo.description,
 
-    keywords: [
-      tool.title,
-      `${tool.title} online`,
-      `free ${tool.title}`,
-      `${tool.title} calculator`,
-      `online ${tool.title}`,
-      `${tool.title} India`,
-      'free online calculator',
-      'online calculator',
-    ],
+    keywords,
 
     alternates: {
       canonical: url,
@@ -223,6 +257,10 @@ export default async function CalculatorPage({ params }) {
         }
       : null;
 
+
+  // =======================================================
+  // PAGE
+  // =======================================================
 
   return (
     <>

@@ -1,5 +1,4 @@
 // app/layout.js
-
 import './globals.css';
 
 export const metadata = {
@@ -16,7 +15,6 @@ export const metadata = {
   keywords: [
     'calculator',
     'online calculator',
-    'free online calculator',
     'free calculator',
     'calculators',
     'EMI calculator',
@@ -33,29 +31,10 @@ export const metadata = {
     'DR calculator',
     'HRA calculator',
     'gratuity calculator',
-    'EPF calculator',
-    'income tax calculator',
     'BMI calculator',
-    'BMR calculator',
     'age calculator',
-    'fuel cost calculator',
-    'mileage calculator',
     'calculator India',
   ],
-
-  authors: [
-    {
-      name: 'Indronil Dey',
-    },
-  ],
-
-  creator: 'Indronil Dey',
-
-  publisher: 'theCalculate',
-
-  applicationName: 'theCalculate',
-
-  category: 'Utilities',
 
   alternates: {
     canonical: '/',
@@ -64,7 +43,6 @@ export const metadata = {
   robots: {
     index: true,
     follow: true,
-
     googleBot: {
       index: true,
       follow: true,
@@ -81,7 +59,6 @@ export const metadata = {
     title: 'theCalculate — Free Online Calculators',
     description:
       'Free online calculators for finance, students, vehicles, daily life and India-specific calculations.',
-    locale: 'en_IN',
   },
 
   twitter: {
@@ -92,7 +69,6 @@ export const metadata = {
   },
 };
 
-// Runs before paint so the correct theme applies immediately.
 const themeInitScript = `
 (function() {
   try {
@@ -110,11 +86,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+
+        {/* Google Search Console verification */}
+        <meta
+          name="google-site-verification"
+          content="<lLLf187Ol0Va1PBdnH_p2Ozn6GmlXpsxYRScLxB-Zsw />"
+        />
+
         <script
           dangerouslySetInnerHTML={{
             __html: themeInitScript,
           }}
         />
+
       </head>
 
       <body className="bg-[var(--bg)] text-[var(--fg)] min-h-screen">

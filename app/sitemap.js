@@ -1,13 +1,14 @@
 // app/sitemap.js
+
 import { categories, calculators } from '@/lib/calculators';
 
 export default function sitemap() {
   const base = 'https://thecalculate.vercel.app';
 
   const staticRoutes = [
-    { 
-      url: `${base}/`, 
-      priority: 1 
+    {
+      url: `${base}/`,
+      priority: 1,
     },
   ];
 

@@ -5,9 +5,9 @@ import { calcGPA4Scale } from '@/lib/calc-functions';
 
 export default function GPACalculator() {
   const [subjects, setSubjects] = useState([
-    { credits: 3, gradePoint: 4.0 },
-    { credits: 3, gradePoint: 3.7 },
-    { credits: 4, gradePoint: 3.3 },
+    { credits: '', gradePoint: '' },
+    { credits: '', gradePoint: '' },
+    { credits: '', gradePoint: '' },
   ]);
 
   const gpa = calcGPA4Scale(subjects);
@@ -21,7 +21,7 @@ export default function GPACalculator() {
   function addSubject() {
     setSubjects([
       ...subjects,
-      { credits: 3, gradePoint: 3.0 },
+      { credits: '', gradePoint: '' },
     ]);
   }
 

@@ -21,6 +21,7 @@ import YGPACalculator from './YGPACalculator';
 import DGPACalculator from './DGPACalculator';
 
 import FuelCostCalculator from './FuelCostCalculator';
+import MileageCalculator from './MileageCalculator';
 import CarEMICalculator from './CarEMICalculator';
 import BikeEMICalculator from './BikeEMICalculator';
 import LoanVsCashCalculator from './LoanVsCashCalculator';
@@ -72,7 +73,7 @@ const registry = {
 
   // Vehicle
   'fuel-cost': FuelCostCalculator,
-  mileage: FuelCostCalculator,
+  mileage: MileageCalculator,
   'car-emi': CarEMICalculator,
   'bike-emi': BikeEMICalculator,
   'loan-vs-cash': LoanVsCashCalculator,

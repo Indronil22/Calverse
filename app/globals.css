@@ -279,3 +279,45 @@ html.dark .fd-dropdown-option:hover {
 html.dark .fd-dropdown-option.selected {
   background: rgba(139, 92, 246, 0.3);
 }
+/* =========================================
+   NORMAL SELECT DROPDOWNS
+========================================= */
+
+/* LIGHT MODE */
+select.input {
+  background-color: #ffffff;
+  color: #111827;
+  border: 1px solid #d1d5db;
+  color-scheme: light;
+}
+
+select.input option {
+  background-color: #ffffff;
+  color: #111827;
+}
+
+/* DARK MODE */
+html.dark select.input,
+.dark select.input {
+  background-color: #34344f !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(167, 139, 250, 0.5);
+  color-scheme: dark;
+}
+
+html.dark select.input option,
+.dark select.input option {
+  background-color: #34344f !important;
+  color: #ffffff !important;
+  border: none !important;
+  outline: none !important;
+}
+
+html.dark select.input:focus,
+.dark select.input:focus {
+  background-color: #34344f !important;
+  color: #ffffff !important;
+  border-color: #a78bfa;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(112, 87, 238, 0.25);
+}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { calcFD } from '@/lib/calc-functions';
 
 export default function FDCalculator() {
@@ -9,6 +9,9 @@ export default function FDCalculator() {
   const [years, setYears] = useState(5);
   const [compounding, setCompounding] = useState(4);
   const [isOpen, setIsOpen] = useState(false);
+
+  // Click-outside reference
+  const dropdownRef = useRef(null);
 
   const { maturity, interest } = calcFD(
     Number(principal) || 0,
@@ -27,6 +30,30 @@ export default function FDCalculator() {
   const selectedOption = options.find(
     (option) => option.value === Number(compounding)
   );
+
+  /* =========================================
+     CLOSE DROPDOWN WHEN CLICKING OUTSIDE
+  ========================================= */
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener(
+        'mousedown',
+        handleClickOutside
+      );
+    };
+  }, []);
 
   return (
     <div className="space-y-12">
@@ -68,11 +95,14 @@ export default function FDCalculator() {
                 Compounding Frequency
               </span>
 
-              <div className="relative mt-1">
+              <div
+                ref={dropdownRef}
+                className="relative mt-1"
+              >
 
                 <button
                   type="button"
-                  onClick={() => setIsOpen(!isOpen)}
+                  onClick={() => setIsOpen((prev) => !prev)}
                   className="fd-dropdown-button"
                 >
                   <span>

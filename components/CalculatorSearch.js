@@ -11,13 +11,15 @@ export default function CalculatorSearch() {
 
   const examples = [
     'Search CGPA Calculator...',
-    'Search SGPA Calculator...',
-    'Search YGPA Calculator...',
-    'Search DGPA Calculator...',
     'Search EMI Calculator...',
+    'Search SGPA Calculator...',
     'Search GST Calculator...',
     'Search SIP Calculator...',
     'Search Age Calculator...',
+    'Search Loan Interest Rate Calculator...',
+    'Search Time Zone Calculator...',
+    'Search Fuel Cost Calculator...',
+    'Search BMI Calculator...',
   ];
 
   useEffect(() => {
@@ -44,7 +46,7 @@ export default function CalculatorSearch() {
           timer = setTimeout(() => {
             deleting = true;
             animate();
-          }, 1800);
+          }, 400);
 
           return;
         }

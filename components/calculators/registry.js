@@ -1,5 +1,6 @@
 // components/calculators/registry.js
 import EMICalculator from './EMICalculator';
+import LoanInterestRateCalculator from './LoanInterestRateCalculator';
 import GSTCalculator from './GSTCalculator';
 import SIPCalculator from './SIPCalculator';
 import FDCalculator from './FDCalculator';
@@ -49,6 +50,7 @@ import ComingSoon from './ComingSoon';
 const registry = {
   // Money
   emi: EMICalculator,
+  'loan-interest-rate': LoanInterestRateCalculator,
   gst: GSTCalculator,
   sip: SIPCalculator,
   fd: FDCalculator,

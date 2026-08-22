@@ -27,6 +27,7 @@ import CarEMICalculator from './CarEMICalculator';
 import BikeEMICalculator from './BikeEMICalculator';
 import LoanVsCashCalculator from './LoanVsCashCalculator';
 
+import TimeZoneConverterCalculator from './TimeZoneConverterCalculator';
 import AgeCalculator from './AgeCalculator';
 import DateDifferenceCalculator from './DateDifferenceCalculator';
 import DiscountCalculator from './DiscountCalculator';
@@ -81,6 +82,7 @@ const registry = {
   'loan-vs-cash': LoanVsCashCalculator,
 
   // Daily life
+  'time-zone-converter': TimeZoneConverterCalculator,
   age: AgeCalculator,
   'date-difference': DateDifferenceCalculator,
   discount: DiscountCalculator,
